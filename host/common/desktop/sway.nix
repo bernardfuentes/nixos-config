@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, theme, ... }:
 let
   sway-run = pkgs.writeShellScriptBin "sway-run" ''
     export XDG_SESSION_TYPE="wayland"
@@ -12,7 +12,7 @@ let
   '';
 in
 {
-  imports = [ (import ./tiling-common.nix { inherit lib pkgs; runner = (lib.getExe sway-run); }) ];
+  imports = [ (import ./tiling-common.nix { inherit lib pkgs theme; runner = (lib.getExe sway-run); }) ];
 
   xdg = {
     portal = {
