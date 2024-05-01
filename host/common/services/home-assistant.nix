@@ -27,15 +27,18 @@
       (pkgs.buildHomeAssistantComponent rec {
         owner = "hultenvp";
         domain = "solis";
-        version = "3.5.2";
+        version = "3.6.0";
 
         src = pkgs.fetchFromGitHub {
           owner = "hultenvp";
           repo = "solis-sensor";
           rev = "v${version}";
-          sha256 = "sha256-Dibn8WTFFnyZnoXYUJ+ZmHBKhBRbWil3eMFUebWckQA=";
+          sha256 = "sha256-DIUhUN1UfyXptaldJBsQEsImEnQqi4zFFKp70yXxDSk=";
         };
+
+        dependencies = [ pkgs.python312Packages.aiofiles ];
       })
+      pkgs.touchlinesl
     ];
     config = {
       default_config = { };
