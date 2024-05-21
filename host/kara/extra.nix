@@ -18,6 +18,14 @@
   };
 
   services = {
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      listenAddress = "kara.tailnet-d5da.ts.net:11434";
+      environmentVariables = {
+        HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+      };
+    };
     # In order to mount the backup to restore files, perform the following:
     #
     #    mkdir backup

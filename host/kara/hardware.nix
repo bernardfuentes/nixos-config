@@ -16,6 +16,7 @@
   ];
 
   hardware.amdgpu.amdvlk = true;
+  hardware.amdgpu.opencl = true;
 
   nixpkgs.hostPlatform = "x86_64-linux";
 }
