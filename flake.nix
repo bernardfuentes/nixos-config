@@ -26,6 +26,9 @@
     libations.url = "github:jnsgruk/libations";
     libations.inputs.nixpkgs.follows = "unstable";
 
+    system-manager.url = "github:numtide/system-manager";
+    system-manager.inputs.nixpkgs.follows = "unstable";
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "unstable";
   };
@@ -101,6 +104,11 @@
           hostname = "volnir";
           pkgsInput = nixpkgs;
         };
+      };
+
+      # Non-NixOS system configurations using system-manager
+      systemConfigs = {
+        dev = libx.mkSystem { hostname = "dev"; };
       };
 
       # Custom packages; acessible via 'nix build', 'nix shell', etc

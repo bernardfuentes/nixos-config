@@ -61,6 +61,31 @@
       ];
     };
 
+  # Helper function for generating system-manager configs
+  mkSystem =
+    {
+      hostname,
+      desktop ? null,
+      pkgsInput ? inputs.unstable,
+    }:
+    inputs.system-manager.lib.makeSystemConfig {
+      extraSpecialArgs = {
+        inherit
+          self
+          inputs
+          outputs
+          stateVersion
+          username
+          hostname
+          desktop
+          ;
+      };
+      modules = [
+        inputs.agenix.nixosModules.default
+        "${self}/host/${hostname}/system.nix"
+      ];
+    };
+
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
     "aarch64-linux"
     "i686-linux"
