@@ -1,34 +1,34 @@
-from homeassistant.components.climate import (
-    ClimateEntity,
-    ClimateEntityFeature,  # type: ignore
-    HVACMode,  # type: ignore
-)
+from homeassistant.components.climate import ClimateEntity
+from homeassistant.components.climate.const import ClimateEntityFeature, HVACMode
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
+from pytouchlinesl import Module, TouchlineSL, Zone
 
-from .const import CONF_AUTH_TOKEN, CONF_MODULE, CONF_USER_ID, DOMAIN
-from .touchline_api import Module
+from .const import (
+    CONF_MODULE,
+    CONF_PASSWORD,
+    CONF_USERNAME,
+    DOMAIN,
+)
+
+CONST_TEMP_PRESET_NAME = "Constant Temperature"
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up the Touchline devices."""
-
     config = hass.data[DOMAIN][entry.entry_id]
+    tsl = TouchlineSL(username=config[CONF_USERNAME], password=config[CONF_PASSWORD])
+    module = await tsl.module(module_id=config[CONF_MODULE])
 
-    module = Module(
-        user_id=config[CONF_USER_ID],
-        token=config[CONF_AUTH_TOKEN],
-        module_id=config[CONF_MODULE],
-    )
-    await module.update()
-
-    async_add_entities(
-        (TouchlineSLZone(id=z.id, name=z.name, module=module) for z in module.zones()),
-        True,
-    )
+    if module:
+        zones = await module.zones()
+        async_add_entities(
+            (TouchlineSLZone(id=z.id, name=z.name, module=module) for z in zones),
+            True,
+        )
 
 
 class TouchlineSLZone(ClimateEntity):
-    """Roth TouchlineSL Zone."""
+    """Roth Touchline SL Zone."""
 
     _attr_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_hvac_mode = HVACMode.HEAT
@@ -38,62 +38,83 @@ class TouchlineSLZone(ClimateEntity):
     )
 
     def __init__(self, *, id, name, module):
-        self.id = id
-        self._name = name
-        self._module = module
-        self._zone = None
+        self.id: int = id
+        self._name: str = name
+        self._module: Module = module
+        self._zone: Zone | None = None
 
-        self._attr_unique_id = f"touchlinesl-{self._module.module_id}-zone-{self.id}"
+        self._attr_unique_id = f"touchlinesl-{self._module.id}-zone-{self.id}"
 
-        self._current_temperature = None
-        self._target_temperature = None
-        self._current_humidity = None
-        self._current_operation_mode = None
-        self._preset_mode = None
+        self._current_temperature: float | None = None
+        self._target_temperature: float | None = None
+        self._current_humidity: float | None = None
+        self._current_operation_mode = HVACMode.HEAT
+        self._preset_mode: str | None = None
+        self._preset_modes: list[str] | None = None
 
     async def async_update(self) -> None:
-        """Update thermostat attributes."""
-        await self._module.update()
-        self._zone = self._module.zone_by_id(self.id)
+        """Update zone attributes."""
+        if z := await self._module.zone(self.id, refresh=True):
+            self._zone = z
+            self._name = z.name
+            self._current_temperature = z.temperature
+            self._target_temperature = z.target_temperature
+            self._current_humidity = z.humidity
 
-        self._name = self._zone.name
-        self._current_temperature = self._zone.temperature
-        self._target_temperature = self._zone.target_temperature
-        self._current_humidity = self._zone.humidity
-        self._preset_mode = None
+            schedules = await self._module.schedules()
+            self._preset_modes = [s.name for s in schedules] + [CONST_TEMP_PRESET_NAME]
+            self._preset_mode = z.mode
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
-        if kwargs.get(ATTR_TEMPERATURE) is not None:
+        if kwargs.get(ATTR_TEMPERATURE, None):
             self._target_temperature = kwargs.get(ATTR_TEMPERATURE)
-        await self._zone.set_temperature(self._target_temperature)
+
+        if self._zone and self._target_temperature:
+            await self._zone.set_temperature(self._target_temperature)
+
+    async def async_set_preset_mode(self, preset_mode: str) -> None:
+        """Assign the zone to a particular global schedule."""
+        if not self._zone:
+            return
+
+        schedules = await self._module.schedules()
+        if not schedules:
+            return
+
+        if preset_mode == CONST_TEMP_PRESET_NAME and self._target_temperature:
+            await self._zone.set_temperature(temperature=self._target_temperature)
+            return
+
+        if schedule := await self._module.schedule_by_name(preset_mode):
+            await self._zone.set_schedule(schedule_id=schedule.id)
 
     @property
-    def name(self):
+    def name(self) -> str | None:
         """Return the name of the climate device."""
         return self._name
 
     @property
-    def current_temperature(self):
+    def current_temperature(self) -> float | None:
         """Return the current temperature."""
         return self._current_temperature
 
     @property
-    def current_humidity(self):
+    def current_humidity(self) -> float | None:
         """Return the current humidity."""
         return self._current_humidity
 
     @property
-    def target_temperature(self):
+    def target_temperature(self) -> float | None:
         """Return the target temperature for the zone."""
         return self._target_temperature
 
     @property
-    def preset_mode(self):
+    def preset_mode(self) -> str | None:
         """Return the current preset mode."""
         return self._preset_mode
 
     @property
-    def preset_modes(self):
+    def preset_modes(self) -> list[str] | None:
         """Return available preset modes."""
-        return []
+        return self._preset_modes

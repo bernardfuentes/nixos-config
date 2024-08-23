@@ -3,11 +3,15 @@
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs { pkgs = final; };
 
-  modifications = _final: prev: {
+  modifications = final: prev: {
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
     juju4 = import ./juju4.nix { pkgs = prev; };
+
+    pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+      (python-final: python-prev: { pytouchlinesl = python-final.callPackage ./pytouchlinesl.nix { }; })
+    ];
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

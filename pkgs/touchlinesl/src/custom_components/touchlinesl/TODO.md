@@ -13,7 +13,7 @@ session = async_get_clientsession(hass)
 
 - [x] Humidity support
 - [x] Set temp support
-- [ ] Schedules/presets support
+- [x] Schedules/presets support
 - [ ] Type annotations
 - [ ] Unit tests
 

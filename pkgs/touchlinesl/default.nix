@@ -2,7 +2,7 @@
 pkgs.buildHomeAssistantComponent rec {
   owner = "jnsgruk";
   domain = "touchlinesl";
-  version = "0.0.1";
+  version = "0.1.0";
 
   src = lib.cleanSource ./src;
   # src = pkgs.fetchFromGitHub {
@@ -12,7 +12,7 @@ pkgs.buildHomeAssistantComponent rec {
   #   hash = "";
   # };
 
-  propagatedBuildInputs = [ pkgs.python312Packages.aiohttp ];
+  propagatedBuildInputs = [ pkgs.python312Packages.pytouchlinesl ];
 
   meta = with lib; {
     description = "A HomeAssistant integration for Roth Touchline SL heating controllers";

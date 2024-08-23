@@ -9,17 +9,15 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
 
 from .const import (
-    CONF_AUTH_TOKEN,
     CONF_MODULE,
     CONF_PASSWORD,
-    CONF_USER_ID,
     CONF_USERNAME,
     DOMAIN,
 )
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Roth TouclineSL configuration setup."""
+    """Roth Touchline SL configuration setup."""
     hass.data[DOMAIN] = {}
 
     if DOMAIN not in config:
@@ -35,9 +33,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
                 data={
                     CONF_USERNAME: conf[CONF_USERNAME],
                     CONF_PASSWORD: conf[CONF_PASSWORD],
-                    CONF_USER_ID: conf[CONF_USER_ID],
                     CONF_MODULE: conf[CONF_MODULE],
-                    CONF_AUTH_TOKEN: conf[CONF_AUTH_TOKEN],
                 },
             )
         )
@@ -45,7 +41,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up Roth TouchlineSL from a config entry."""
+    """Set up Roth Touchline SL from a config entry."""
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][entry.entry_id] = entry.data
     hass.async_create_task(
