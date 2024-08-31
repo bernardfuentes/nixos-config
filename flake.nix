@@ -38,7 +38,7 @@
     let
       inherit (self) outputs;
       stateVersion = "24.05";
-      username = "jon";
+      username = "bernard";
 
       libx = import ./lib {
         inherit
@@ -60,6 +60,10 @@
         };
         "${username}@kara" = libx.mkHome {
           hostname = "kara";
+          desktop = "hyprland";
+        };
+        "${username}@octopus" = libx.mkHome {
+          hostname = "octopus";
           desktop = "hyprland";
         };
         # Headless machines
@@ -84,6 +88,10 @@
         };
         kara = libx.mkHost {
           hostname = "kara";
+          desktop = "hyprland";
+        };
+        octopus = libx.mkHost {
+          hostname = "octopus";
           desktop = "hyprland";
         };
         # Headless machines
