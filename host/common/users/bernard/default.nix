@@ -5,7 +5,7 @@ in
 {
   users.users.bernard = {
     isNormalUser = true;
-    hashedPassword = "$y$j9T$NBGpJh/2fmkPmP7/.w4x61$HQyMsiWb/2i9DeZgO9CsMl/HvMp8wiPSCaZ6SsvDdk0"
+    hashedPassword = "$y$j9T$NBGpJh/2fmkPmP7/.w4x61$HQyMsiWb/2i9DeZgO9CsMl/HvMp8wiPSCaZ6SsvDdk0";
     shell = pkgs.zsh;
     extraGroups =
       [

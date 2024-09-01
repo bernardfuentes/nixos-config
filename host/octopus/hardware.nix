@@ -14,6 +14,11 @@
   };
 
   boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/5e9a0b4c-003f-42ed-93d2-f716f3b5438b";
+  environment.etc = {
+    "crypttab".text = ''
+      cryptstorage UUID=1b3b5fcc-a883-4af5-a975-7226ef554a82 /root/luks-1b3b5fcc-a883-4af5-a975-7226ef554a82.key
+    '';
+  };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/226f8c67-a2e0-4c30-bede-9f0d8ff88941";

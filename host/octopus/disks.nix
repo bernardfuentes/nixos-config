@@ -25,15 +25,16 @@ in
     preLVM = true;
   };
 
-  environment.etc = {
-    "crypttab".text = ''
-      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
-    '';
-  };
+  # environment.etc = {
+  #   "crypttab".text = ''
+  #     # data  /dev/disk/by-partlabel/data  /etc/data.keyfile
+  #     cryptstorage UUID=1b3b5fcc-a883-4af5-a975-7226ef554a82 /root/luks-1b3b5fcc-a883-4af5-a975-7226ef554a82.key
+  #   '';
+  # };
 
   # TODO: Remove this if/when machine is reinstalled.
   # This is a workaround for the legacy -> gpt tables disko format.
-  fileSystems."/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
+  # fileSystems."/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
 
   disko.devices = {
     disk = {
