@@ -67,7 +67,7 @@ let
     text = ''
       if [[ "$1" == "toggle" ]]; then
         if [[ "$(tailscale status --json | jq -r '.BackendState')" == "Stopped" ]]; then
-          tailscale up --operator=jon --ssh --reset
+          tailscale up --operator=bernard --ssh --reset
         else
           tailscale down
         fi

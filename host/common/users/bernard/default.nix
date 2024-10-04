@@ -3,9 +3,10 @@ let
   ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
-  users.users.jon = {
+  users.users.bernard = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    hashedPassword = "$y$j9T$NBGpJh/2fmkPmP7/.w4x61$HQyMsiWb/2i9DeZgO9CsMl/HvMp8wiPSCaZ6SsvDdk0";
     extraGroups =
       [
         "audio"

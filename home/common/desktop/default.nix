@@ -40,6 +40,8 @@
     todoist-electron
     xdg-utils
     xorg.xlsclients
+
+    qbittorrent
   ];
 
   fonts.fontconfig.enable = true;

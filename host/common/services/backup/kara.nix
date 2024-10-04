@@ -10,7 +10,7 @@ _: {
   #
   #    borg-job-borgbase umount backup
   services.borgbackup.jobs."borgbase" = {
-    paths = [ "/home/jon/data" ];
+    paths = [ "/home/bernard/data" ];
     exclude = [
       "**/node_modules"
       "**/build"
@@ -19,11 +19,11 @@ _: {
       "**/.venv"
       "**/venv"
       "**/target"
-      "/home/jon/downloads"
-      "/home/jon/data/downloads"
-      "/home/jon/data/temp"
-      "/home/jon/go"
-      "/home/jon/sdk"
+      "/home/bernard/downloads"
+      "/home/bernard/data/downloads"
+      "/home/bernard/data/temp"
+      "/home/bernard/go"
+      "/home/bernard/sdk"
     ];
     repo = "z2sqv4mw@z2sqv4mw.repo.borgbase.com:repo";
     startAt = "*-*-* 12:00:00";

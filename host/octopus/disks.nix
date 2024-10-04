@@ -78,7 +78,7 @@ in
                     };
                     "@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = defaultBtrfsOpts;
+                      mountOptions = defaultBtrfsOpts;P
                     };
                     "@home" = {
                       mountpoint = "/home";

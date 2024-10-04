@@ -170,8 +170,8 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "nh clean all --keep-since 10d --keep 3";
-        rln = "nh os switch /home/jon/nixos-config";
-        rlh = "nh home switch /home/jon/nixos-config";
+        rln = "nh os switch /home/bernard/nixos-config";
+        rlh = "nh home switch /home/bernard/nixos-config";
         rlb = "rln;rlh";
       };
     };

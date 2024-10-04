@@ -34,7 +34,7 @@
     cage = {
       enable = true;
       extraArguments = [ "-s" ];
-      user = "jon";
+      user = "bernard";
       program = "${lib.getExe pkgs.firefox} -kiosk http://localhost:30053";
       environment = {
         WLR_LIBINPUT_NO_DEVICES = "1";

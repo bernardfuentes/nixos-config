@@ -38,7 +38,7 @@
     let
       inherit (self) outputs;
       stateVersion = "24.05";
-      username = "jon";
+      username = "bernard";
 
       libx = import ./lib {
         inherit
@@ -51,9 +51,13 @@
       };
     in
     {
-      # nix build .#homeConfigurations."jon@freyja".activationPackage
+      # nix build .#homeConfigurations."bernard@freyja".activationPackage
       homeConfigurations = {
         # Desktop machines
+        "${username}@octopus" = libx.mkHome {
+          hostname = "octopus";
+          desktop = "hyprland";
+        };
         "${username}@freyja" = libx.mkHome {
           hostname = "freyja";
           desktop = "hyprland";
@@ -78,6 +82,10 @@
       # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
       nixosConfigurations = {
         # Desktop machines
+        octopus = libx.mkHost {
+          hostname = "octopus";
+          desktop = "hyprland";
+        };
         freyja = libx.mkHost {
           hostname = "freyja";
           desktop = "hyprland";

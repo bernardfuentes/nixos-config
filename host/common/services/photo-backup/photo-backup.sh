@@ -72,7 +72,7 @@ else
     backup_icloud nina "$NINA_EMAIL" "$NINA_PASSWORD"
     backup_icloud rich "$RICH_EMAIL" "$RICH_PASSWORD"
     backup_icloud laura "$LAURA_EMAIL" "$LAURA_PASSWORD"
-    backup_icloud jon "$JON_EMAIL" "$JON_PASSWORD"
+    backup_icloud bernard "$JON_EMAIL" "$JON_PASSWORD"
 fi
 
-chown -R jon:users /data/photos
+chown -R bernard:users /data/photos
