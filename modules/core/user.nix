@@ -7,8 +7,8 @@
     extraSpecialArgs = { inherit inputs username host; };
     users.${username} = {
       imports = 
-        if (host == "desktop") then 
-          [ ./../home/default.desktop.nix ] 
+        if (host == "octopus") then 
+          [ ./../home/default.${host}.nix ] 
         else [ ./../home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
@@ -22,6 +22,9 @@
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
+    hashedPassword = if username == "bernard" then 
+      "$y$j9T$NBGpJh/2fmkPmP7/.w4x61$HQyMsiWb/2i9DeZgO9CsMl/HvMp8wiPSCaZ6SsvDdk0"
+      else null;
   };
   nix.settings.allowed-users = [ "${username}" ];
 }

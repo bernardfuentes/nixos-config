@@ -1,6 +1,5 @@
 {inputs, username, host, ...}: {
   imports = [
-    ./aseprite/aseprite.nix           # pixel art editor
     ./audacious.nix                   # music player
     ./bat.nix                         # better cat command
     ./btop.nix                        # resouces monitor 
@@ -9,7 +8,6 @@
     ./fastfetch.nix                   # fetch tool
     ./floorp/floorp.nix               # firefox based browser
     ./fzf.nix                         # fuzzy finder
-    ./gaming.nix                      # packages related to gaming
     ./git.nix                         # version control
     ./gnome.nix                       # gnome apps
     ./gtk.nix                         # gtk theme
