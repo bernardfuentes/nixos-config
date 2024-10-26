@@ -21,7 +21,7 @@
         "hyprlock"
 
         ## App auto start
-        # "[workspace 1 silent] brave"
+        "[workspace 0 silent] qbittorrent"
         # "[workspace 2 silent] wezterm"
       ];
 
