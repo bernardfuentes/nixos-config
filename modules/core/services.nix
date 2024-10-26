@@ -43,28 +43,6 @@
         # limits for empty pre-post-pair cleanup
         EMPTY_PRE_POST_MIN_AGE = 1800;
       };
-      root = {
-        SUBVOLUME = "/";
-        ALLOW_USERS = ["bernard"];
-        SPACE_LIMIT = 0.5;
-        FREE_LIMIT = 0.2;
-        NUMBER_CLEANUP = true;
-        NUMBER_MIN_AGE = 1800;
-        NUMBER_LIMIT = 50;
-        NUMBER_LIMIT_IMPORTANT = 10;
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
-        TIMELINE_MIN_AGE = 1800;
-        TIMELINE_LIMIT_HOURLY = 24;
-        TIMELINE_LIMIT_DAILY = 10;
-        TIMELINE_LIMIT_WEEKLY = 8;
-        TIMELINE_LIMIT_MONTHLY = 4;
-        TIMELINE_LIMIT_YEARLY = 0;
-        # cleanup empty pre-post-pairs
-        EMPTY_PRE_POST_CLEANUP = true;
-        # limits for empty pre-post-pair cleanup
-        EMPTY_PRE_POST_MIN_AGE = 1800;
-      };
     };
   };
 

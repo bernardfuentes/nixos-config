@@ -31,5 +31,6 @@
     ./wezterm/wezterm.nix             # terminal
     ./xdg-mimes.nix                   # xdg config
     ./zsh                             # shell
+    ./led.nix                         # keyboard led
   ];
 }
