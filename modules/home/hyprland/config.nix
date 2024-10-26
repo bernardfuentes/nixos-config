@@ -14,7 +14,7 @@
         "wl-clip-persist --clipboard both &"
         "wl-paste --watch cliphist store &"
         "waybar &"
-         "swaync &"
+        "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
         # "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
 

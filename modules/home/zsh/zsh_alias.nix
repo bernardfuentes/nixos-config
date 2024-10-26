@@ -34,6 +34,26 @@
       nix-search = "nh search";
       nix-test = "nh os test";
 
+      # Git
+      ga   = "git add";
+      gaa  = "git add --all";
+      gs   = "git status";
+      gb   = "git branch";
+      gm   = "git merge";
+      gpl  = "git pull";
+      gplo = "git pull origin";
+      gps  = "git push";
+      gpst = "git push --follow-tags";
+      gpso = "git push origin";
+      gc   = "git commit";
+      gcm  = "git commit -m";
+      gcma = "git add --all && git commit -m";
+      gtag = "git tag -ma";
+      gch  = "git checkout";
+      gchb = "git checkout -b";
+      gcoe = "git config user.email";
+      gcon = "git config user.name";    
+
       # python
       piv = "python -m venv .venv";
       psv = "source .venv/bin/activate";

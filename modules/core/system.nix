@@ -5,14 +5,21 @@
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
-      substituters = [ "https://nix-gaming.cachix.org" ];
-      trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
     };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-then 7d";
+    }
+
   };
   nixpkgs = {
     overlays = [
       inputs.nur.overlay
     ];
+    config = {
+      allowUnfree = true;
+    }
   };
 
   environment.systemPackages = with pkgs; [
@@ -22,6 +29,5 @@
 
   time.timeZone = "Australia/Adelaide";
   i18n.defaultLocale = "en_US.UTF-8";
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
 }

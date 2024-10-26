@@ -17,7 +17,6 @@
     ./micro.nix                       # nano replacement
     ./nemo.nix                        # file manager
     ./nvim.nix                        # neovim editor
-    ./p10k/p10k.nix
     ./packages.nix                    # other packages
     ./retroarch.nix  
     ./rofi.nix                        # launcher

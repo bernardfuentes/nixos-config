@@ -14,6 +14,7 @@
     ./system.nix
     ./user.nix
     ./wayland.nix
+    ./docker.nix
     ./virtualization.nix
   ];
 }

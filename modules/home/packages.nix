@@ -71,11 +71,22 @@ in
     pavucontrol                       # pulseaudio volume controle (GUI)
     pitivi                            # video editing
     qalculate-gtk                     # calculator
-    thunderbird
-    vlc
+    joplin-desktop
+    qbittorrent
+    mpv
+    gnucash
+    zellij
+    tor-browser
     winetricks
     wineWowPackages.wayland
     zenity
+
+    snapper
+    snapper-gui
+
+    docker
+    openssl
+    unzip
 
     # Python
     python3
