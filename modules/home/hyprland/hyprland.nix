@@ -24,5 +24,10 @@
     };
     # enableNvidiaPatches = false;
     systemd.enable = true;
+    settings = {
+      debug = {
+	disable_logs = false;
+      };
+    };
   };
 }

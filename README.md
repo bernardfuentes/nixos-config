@@ -270,7 +270,7 @@ Keybindings
 - ```$mainMod, Return, exec, wezterm start --always-new-process```
 - ```ALT, Return, exec, [float; center] wezterm start --always-new-process```
 - ```$mainMod SHIFT, Return, exec, [fullscreen] wezterm start --always-new-process```
-- ```$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'```
+- ```$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] brave'```
 - ```$mainMod, Q, killactive,```
 - ```$mainMod, F, fullscreen, 0```
 - ```$mainMod SHIFT, F, fullscreen, 1```

@@ -6,7 +6,6 @@
     ./cava.nix                        # audio visualizer
     ./discord/discord.nix             # discord with gruvbox
     ./fastfetch.nix                   # fetch tool
-    ./floorp/floorp.nix               # firefox based browser
     ./fzf.nix                         # fuzzy finder
     ./git.nix                         # version control
     ./gnome.nix                       # gnome apps
@@ -23,6 +22,7 @@
     ./retroarch.nix  
     ./rofi.nix                        # launcher
     ./scripts/scripts.nix             # personal scripts
+    ./brave.nix                       # brave browser
     ./spicetify.nix                   # spotify client
     ./starship.nix                    # shell prompt
     ./swaylock.nix                    # lock screen

@@ -1,7 +1,7 @@
 { host, ... }:
 let custom = {
   font = "JetBrainsMono Nerd Font";
-  font_size = "18px";
+  font_size = "14px";
   font_weight = "bold";
   text_color = "#FBF1C7";
   background_0 = "#1D2021";
@@ -20,7 +20,7 @@ let custom = {
 in 
 {
   programs.waybar.settings.mainBar = with custom; {
-    position= "bottom";
+    position= "top";
     layer= "top";
     height= 30;
     margin-top= 0;
@@ -38,7 +38,7 @@ in
     modules-right= [
         "cpu"
         "memory"
-        (if (host == "desktop") then "disk" else "")
+        (if (host == "octopus") then "disk" else "")
         "pulseaudio" 
         "network"
         "battery"
@@ -59,16 +59,16 @@ in
         format = "{icon}";
         on-click= "activate";
         format-icons= {
-            "1"  = "I";
-            "2"  = "II";
-            "3"  = "III";
-            "4"  = "IV";
-            "5"  = "V";
-            "6"  = "VI";
-            "7"  = "VII";
-            "8"  = "VIII";
-            "9"  = "IX";
-            "10" = "X";
+            "1"  = "1";
+            "2"  = "2";
+            "3"  = "3";
+            "4"  = "4";
+            "5"  = "5";
+            "6"  = "6";
+            "7"  = "7";
+            "8"  = "8";
+            "9"  = "9";
+            "10" = "0";
             sort-by-number= true;
         };
         persistent-workspaces = {

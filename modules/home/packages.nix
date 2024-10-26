@@ -77,14 +77,9 @@ in
     wineWowPackages.wayland
     zenity
 
-    # C / C++
-    gcc
-    gdb
-    gnumake
-
     # Python
     python3
-    python312Packages.ipython
+    python310Packages.ipython
 
     inputs.alejandra.defaultPackage.${system}
   ]);

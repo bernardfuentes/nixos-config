@@ -14,14 +14,14 @@
         "wl-clip-persist --clipboard both &"
         "wl-paste --watch cliphist store &"
         "waybar &"
-        "swaync &"
+         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
-        "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
+        # "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
 
         "hyprlock"
 
         ## App auto start
-        # "[workspace 1 silent] floorp"
+        # "[workspace 1 silent] brave"
         # "[workspace 2 silent] wezterm"
       ];
 
@@ -145,7 +145,7 @@
         "$mainMod, Return, exec, wezterm start --always-new-process"
         "ALT, Return, exec, [float; center] wezterm start --always-new-process"
         "$mainMod SHIFT, Return, exec, [fullscreen] wezterm start --always-new-process"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] brave'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
@@ -283,9 +283,9 @@
         "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
         "opacity 1.0 override 1.0 override, class:(Unity)"
-        "opacity 1.0 override 1.0 override, class:(floorp)"
+        "opacity 1.0 override 1.0 override, class:(brave)"
         "opacity 1.0 override 1.0 override, class:(evince)"
-        "workspace 1, class:^(floorp)$"
+        "workspace 1, class:^(brave)$"
         "workspace 3, class:^(evince)$"
         "workspace 4, class:^(Gimp-2.10)$"
         "workspace 5, class:^(Audacious)$"
@@ -328,7 +328,8 @@
     };
 
     extraConfig = "
-      monitor=,preferred,auto,auto
+      monitor = DP-3, 1920x1080, 0x0, 1
+      monitor = HDMI-A-1, 1920x1080, 1920x0, 1
 
       xwayland {
         force_zero_scaling = true
