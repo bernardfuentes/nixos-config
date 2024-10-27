@@ -16,7 +16,7 @@
         "waybar &"
         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
-        # "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
+        "swaybg -m fill -i $(find ~/wallpapers/ -maxdepth 1 -type f) &"
 
         "hyprlock"
 
