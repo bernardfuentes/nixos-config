@@ -11,8 +11,7 @@
 
         "nm-applet &"
         "poweralertd &"
-        "wl-clip-persist --clipboard both &"
-        "wl-paste --watch cliphist store &"
+        "cb"
         "waybar &"
         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
