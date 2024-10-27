@@ -67,4 +67,6 @@
       ACTION=="add", SUBSYSTEM=="usb", RUN+="${pkgs.g810-led}/bin/g810-led -a 0000ff"
     '';
   };
+
+  
 }
