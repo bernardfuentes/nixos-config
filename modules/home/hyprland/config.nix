@@ -19,6 +19,7 @@
         "swaybg -m fill -i $(find ~/wallpapers/ -maxdepth 1 -type f) &"
 
         "hyprlock"
+        "hypridle"
 
         ## App auto start
         "[workspace 0 silent] qbittorrent"
