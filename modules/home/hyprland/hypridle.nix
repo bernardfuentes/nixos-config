@@ -10,9 +10,13 @@ in
   }
 
   listener {
-    timeout = 200
+    timeout = 290
+    on-timeout = pid swaylock || swaylock
+  }
+
+  listener {
+    timeout = 300
     on-timeout = hyprctl dispatch dpms off
-    on-resume = hyprctl displatch dpms on
   }
   '';
 }

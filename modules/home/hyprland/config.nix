@@ -11,7 +11,8 @@
 
         "nm-applet &"
         "poweralertd &"
-        "cb"
+        "wl-clip-persist --clipboard both &"
+        "wl-paste --watch cliphist store &"
         "waybar &"
         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
@@ -142,8 +143,7 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, wezterm start --always-new-process"
-        "ALT, Return, exec, [float; center] wezterm start --always-new-process"
+        "$mainMod, Return, exec, kitty"
         "$mainMod SHIFT, Return, exec, [fullscreen] wezterm start --always-new-process"
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] brave'"
         "$mainMod, Q, killactive,"
@@ -165,8 +165,13 @@
         "$mainMod, W,exec, wallpaper-picker"
         "$mainMod, N, exec, swaync-client -t -sw"
         "$mainMod SHIFT, W, exec, vm-start"
+        "$mainMod SHIFT, L, exec, hyprctl dispatch dpms off"
+
 
         # screenshot
+
+
+        
         ",Print, exec, screenshot --copy"
         "$mainMod, Print, exec, screenshot --save"
         "$mainMod SHIFT, Print, exec, screenshot --swappy"
