@@ -13,9 +13,7 @@
     hyprpicker.url = "github:hyprwm/hyprpicker";
   
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-  
-    nix-gaming.url = "github:fufexan/nix-gaming";
-   
+     
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,10 +26,6 @@
 
     hyprmag.url = "github:SIMULATAN/hyprmag";
 
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { nixpkgs, self, ...} @ inputs:

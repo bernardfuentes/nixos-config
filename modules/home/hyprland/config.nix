@@ -23,7 +23,7 @@
 
         ## App auto start
         "[workspace 0 silent] qbittorrent"
-        # "[workspace 2 silent] wezterm"
+        # "[workspace 2 silent] kitty"
       ];
 
       input = {
@@ -144,7 +144,7 @@
 
         # keybindings
         "$mainMod, Return, exec, kitty"
-        "$mainMod SHIFT, Return, exec, [fullscreen] wezterm start --always-new-process"
+        "$mainMod SHIFT, Return, exec, [fullscreen] kitty start --always-new-process"
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] brave'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
