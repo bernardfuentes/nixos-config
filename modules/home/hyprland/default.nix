@@ -6,6 +6,5 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./variables.nix
-    inputs.hyprland.homeManagerModules.default
   ];
 }
