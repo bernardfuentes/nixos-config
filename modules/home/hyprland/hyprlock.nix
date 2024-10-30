@@ -1,85 +1,100 @@
-{
-  self,
-  lib,
-  pkgs,
-  hostname,
-  ...
-}:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
-  inherit (theme) hexToRgb colours;
+{ pkgs, ... }:
+let 
+  text = "rgb(251, 241, 199)";
 in
 {
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      general = {
-        grace = 5;
-        hide_cursor = true;
-      };
+  home.packages = [ pkgs.hyprlock ];
+  xdg.configFile."hypr/hyprlock.conf".text = ''
+    # BACKGROUND
+    background {
+      monitor =
+      path = ${../../../wallpapers/otherWallpaper/gruvbox/forest.jpg}
+      blur_passes = 1
+      contrast = 0.8916
+      brightness = 0.8172
+      vibrancy = 0.1696
+      vibrancy_darkness = 0.0
+    }
 
-      background = [
-        {
-          path = "${theme.wallpaper}";
-          blur_passes = 2;
-          blur_size = 6;
-        }
-      ];
+    # GENERAL
+    general {
+      hide_cursor = true
+      no_fade_in = false
+      grace = 0
+      disable_loading_bar = false
+    }
 
-      input-field = [
-        {
-          size = "250, 60";
-          outer_color = "rgb(${hexToRgb colours.black})";
-          inner_color = "rgb(${hexToRgb colours.bgDark})";
-          font_color = "rgb(${hexToRgb colours.purple})";
-          placeholder_text = "";
-        }
-      ];
+    # Time
+    label {
+      monitor = 
+      text = cmd[update:1000] echo "$(date +"%k:%M")"
+      color = rgba(235, 219, 178, .9)
+      font_size = 111
+      font_family = JetBrainsMono NF Bold
+      position = 0, 270
+      halign = center
+      valign = center
+    }
 
-      label = [
-        {
-          text = "Hello";
-          color = "rgba(${hexToRgb colours.text}, 1.0)";
-          font_family = theme.fonts.default.name;
-          font_size = 64;
-          text_align = "center";
-          halign = "center";
-          valign = "center";
-          position = "0, 160";
-        }
-        {
-          text = "$TIME";
-          color = "rgba(${hexToRgb colours.subtext1}, 1.0)";
-          font_family = theme.fonts.default.name;
-          font_size = 32;
-          text_align = "center";
-          halign = "center";
-          valign = "center";
-          position = "0, 75";
-        }
-      ];
-    };
-  };
+    # Day
+    label {
+      monitor =
+      text = cmd[update:1000] echo "- $(date +"%A, %B %d") -"
+      color = rgba(235, 219, 178, .9)
+      font_size = 20
+      font_family = CaskaydiaCove Nerd Font
+      position = 0, 160
+      halign = center
+      valign = center
+    }
 
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        lock_cmd = "${lib.getExe pkgs.hyprlock}";
-        before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
-      };
 
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "${lib.getExe pkgs.hyprlock}";
-        }
-        {
-          timeout = 305;
-          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-        }
-      ];
-    };
-  };
+    # USER-BOX
+    shape {
+      monitor =
+      size = 350, 50
+      color = rgba(225, 225, 225, .2)
+      rounding = 15
+      border_size = 0
+      border_color = rgba(255, 255, 255, 0)
+      rotate = 0
+
+      position = 0, -230
+      halign = center
+      valign = center
+    }
+
+    # USER
+    label {
+      monitor =
+      text =   $USER
+      color = rgba(235, 219, 178, .9)
+      font_size = 16
+      font_family = CaskaydiaCove Nerd Font
+      position = 0, -230
+      halign = center
+      valign = center
+    }
+
+    # INPUT FIELD
+    input-field {
+      monitor =
+      size = 350, 50
+      outline_thickness = 0
+      rounding = 15
+      dots_size = 0.25 # Scale of input-field height, 0.2 - 0.8
+      dots_spacing = 0.4 # Scale of dots' absolute size, 0.0 - 1.0
+      dots_center = true
+      outer_color = rgba(255, 255, 255, 0)
+      inner_color = rgba(225, 225, 225, 0.2)
+      color = rgba(235, 219, 178, .9)
+      font_color = rgba(235, 219, 178, .9)
+      fade_on_empty = false
+      placeholder_text = <i><span foreground="##ebdbb2e5">Enter Password</span></i>
+      hide_input = false
+      position = 0, -300
+      halign = center
+      valign = center
+    }
+  '';
 }

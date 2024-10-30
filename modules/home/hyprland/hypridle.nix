@@ -7,6 +7,7 @@ in
   xdg.configFile."hypr/hypridle.conf".text = ''
   general {
     lock_cmd = swaylock
+    before_sleep_cmd = swaylock
   }
 
   listener {
@@ -17,6 +18,7 @@ in
   listener {
     timeout = 300
     on-timeout = hyprctl dispatch dpms off
+    on-resume = hyprctl dispatch dpms on
   }
   '';
 }

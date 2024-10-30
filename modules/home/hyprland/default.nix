@@ -4,7 +4,7 @@
     ./hyprland.nix
     ./config.nix
     ./hyprlock.nix
-    # ./hypridle.nix
+    ./hypridle.nix
     ./variables.nix
   ];
 }
