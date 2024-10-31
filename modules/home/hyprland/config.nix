@@ -4,9 +4,13 @@
     settings = {
       
       # autostart
-     
-        "nm-applet &"
+      exec-once = [
+        "systemctl --user import-environment &"
+        "hash dbus-update-activation-environment 2>/dev/null &"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
+
         "poweralertd &"
+        "nm-applet &"
         "wl-clip-persist --clipboard both &"
         "wl-paste --watch cliphist store &"
         "waybar &"
@@ -21,7 +25,7 @@
         "[workspace 0 silent] qbittorrent"
         # "[workspace 2 silent] kitty"
       ];
-
+      
       input = {
         kb_layout = "us";
         kb_options ="grp:alt_caps_toggle"; 
