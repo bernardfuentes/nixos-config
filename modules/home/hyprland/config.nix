@@ -228,7 +228,8 @@
         "$mainMod, mouse_up, workspace, e+1"
 
         # clipboard manager
-        "$mainMod, V, exec, export XDG_CACHE_HOME=/home/$USER/.local/cache; cliphist list | rofi -dmenu -display-columns 2 -window-title '📋' | cliphist decode | wl-copy"
+        "$mainMod, C, exec, export XDG_CACHE_HOME=/home/$USER/.local/cache; cliphist list | rofi -dmenu -display-columns 2 -window-title '📋' | cliphist decode | wl-copy"
+        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;}' | cliphist decode | wl-copy"
       ];
 
       # # binds active in lockscreen
