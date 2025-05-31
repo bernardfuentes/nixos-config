@@ -11,8 +11,7 @@
 
         "poweralertd &"
         "nm-applet &"
-        "wl-clip-persist --clipboard both &"
-        "wl-paste --watch cliphist store &"
+        "wl-paste -p -t text --watch clipman store -P --histpath='~/.local/share/clipman-primary.json'"
         "waybar &"
         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
@@ -232,8 +231,7 @@
         "$mainMod, mouse_up, workspace, e+1"
 
         # clipboard manager
-        "$mainMod, C, exec, export XDG_CACHE_HOME=/home/$USER/.local/cache; cliphist list | rofi -dmenu -display-columns 2 -window-title '📋' | cliphist decode | wl-copy"
-        "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;}' | cliphist decode | wl-copy"
+        "$mainMod, V, exec, clipman pick -t rofi"
       ];
 
       # # binds active in lockscreen

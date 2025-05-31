@@ -8,8 +8,7 @@
     inputs.hyprmag.packages.${pkgs.system}.hyprmag
     grim
     slurp
-    wl-clip-persist
-    cliphist
+    clipman
     wf-recorder
     glib
     wayland

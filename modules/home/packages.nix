@@ -87,6 +87,7 @@ in
     docker
     openssl
     unzip
+    tor-browser
 
     # Python
     python3
