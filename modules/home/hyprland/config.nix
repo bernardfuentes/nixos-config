@@ -15,7 +15,7 @@
         "waybar &"
         "swaync &"
         "hyprctl setcursor Bibata-Modern-Ice 24 &"
-        "swaybg -m fill -i $(find ~/wallpapers/ -maxdepth 1 -type f) &"
+        "swww init && swww img $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) --transition-type none &"
 
         "hyprlock"
         "hypridle"
@@ -156,7 +156,7 @@
         "ALT, Escape, exec, hyprlock"
         "$mainMod SHIFT, Escape, exec, power-menu"
         "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+        "$mainMod, X, togglesplit,"
         "$mainMod, T, exec, toggle_oppacity"
         "$mainMod, E, exec, nemo"
         "$mainMod SHIFT, B, exec, toggle_waybar"
@@ -180,6 +180,10 @@
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, j, movefocus, d"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, l, movefocus, r"
 
         # switch workspace
         "$mainMod, 1, workspace, 1"
@@ -211,14 +215,28 @@
         "$mainMod SHIFT, right, movewindow, r"
         "$mainMod SHIFT, up, movewindow, u"
         "$mainMod SHIFT, down, movewindow, d"
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, j, movewindow, d"
+        "$mainMod SHIFT, k, movewindow, u"
+        "$mainMod SHIFT, l, movewindow, r"
+
         "$mainMod CTRL, left, resizeactive, -80 0"
         "$mainMod CTRL, right, resizeactive, 80 0"
         "$mainMod CTRL, up, resizeactive, 0 -80"
         "$mainMod CTRL, down, resizeactive, 0 80"
+        "$mainMod CTRL, h, resizeactive, -80 0"
+        "$mainMod CTRL, j, resizeactive, 0 80"
+        "$mainMod CTRL, k, resizeactive, 0 -80"
+        "$mainMod CTRL, l, resizeactive, 80 0"
+
         "$mainMod ALT, left, moveactive,  -80 0"
         "$mainMod ALT, right, moveactive, 80 0"
         "$mainMod ALT, up, moveactive, 0 -80"
         "$mainMod ALT, down, moveactive, 0 80"
+        "$mainMod ALT, h, moveactive,  -80 0"
+        "$mainMod ALT, j, moveactive, 0 80"
+        "$mainMod ALT, k, moveactive, 0 -80"
+        "$mainMod ALT, l, moveactive, 80 0"
 
         # media and volume controls
         # ",XF86AudioMute,exec, pamixer -t"
